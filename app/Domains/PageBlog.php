@@ -2,17 +2,36 @@
 
 namespace App\Domains;
 
-class PageBlog 
+use App\Interfaces\PageInterface;
+use App\Models\Blog;
+class PageBlog extends PageContent implements PageInterface
 {
-  private $id;
-  private $title;
-  private $slug;
-  private $description;
-  private $image;
-  private $author;
 
-  public function create(){}
-  public function update(){}
-  public function delete(){}
+  public function __construct($tableName)
+  {
+    $blogModel = new Blog();
+    $blogModel->setTable($tableName);
+    $this->model = $blogModel;
+  }
+
+  public function createPost($data){
+    $this->model->create([
+      "title"       => $data->title,
+      "slug"        => strtolower(str_replace(' ','_',$data->title)),
+      "description" => $data->description,
+      "image"       => $data->image,
+      "author"      => $data->author,
+      "created_by"  => $data->created_by,
+     ]);
+  }
+
+  public function updatePost($postId,$data){
+    $this->model->where('id', $postId)->update([
+      "title"       => $data->title,
+      "description" => $data->description,
+      "image"       => $data->image,
+     ]);
+  }
+
 
 }

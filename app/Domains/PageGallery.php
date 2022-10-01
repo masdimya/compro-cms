@@ -1,6 +1,6 @@
 <?php
 
-class PageGallery extends Page 
+class PageGallery
 {
   private $id;
   private $title;

@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    dd(csrf_token());
     return view('welcome');
 });
 
 
 Route::get('/page', 'PageSettingController@get');
-Route::get('/page/create', 'PageSettingController@create');
+Route::post('/page/create', 'PageSettingController@create');
 Route::get('/page/edit', 'PageSettingController@edit');
 Route::get('/page/delete', 'PageSettingController@delete');
 

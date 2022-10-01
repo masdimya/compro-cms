@@ -10,10 +10,11 @@ trait PageRouteGenerator
     <<<'FILE_CONTENTS'
 
     Route::group(['prefix'=>'PREFIX'], function(){
-      Route::get('/'       , 'CONTROLLER_NAME@get');
-      Route::get('/create' , 'CONTROLLER_NAME@create');
-      Route::get('/edit'   , 'CONTROLLER_NAME@edit');
-      Route::get('/delete' , 'CONTROLLER_NAME@delete');
+      Route::get('/'       , 'CONTROLLER_NAME@index');
+      Route::get('/{id}'       , 'CONTROLLER_NAME@get');
+      Route::post('/create' , 'CONTROLLER_NAME@store');
+      Route::put('/{id}/edit'   , 'CONTROLLER_NAME@update');
+      Route::delete('/{id}/delete' , 'CONTROLLER_NAME@delete');
     });
 
     FILE_CONTENTS;
@@ -47,9 +48,7 @@ trait PageRouteGenerator
       case 'blog':
         return 'PageBlogController';
       case 'gallery':
-        return 'PageGalleryController';
       case 'content':
-        return 'PageContentController';
       default:
         return 'PageContentController';
     }

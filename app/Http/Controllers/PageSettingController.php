@@ -14,30 +14,30 @@ class PageSettingController extends Controller
     }
 
     
-    public function create(){
+    public function create(Request $request){
         $page = new Page();
-        $page->set('Visi Misi','blog');
+        $page->set($request->name, $request->type);
         $page->add();
         return 'created';
     }
 
 
-    public function edit(){
+    public function edit($id, Request $request){
         $page = new Page();
         $page->get([
-            'id' => 1
+            'id' => $id
         ]);
         
-        $page->setName('Visi & Misi');
+        $page->setName($request->name);
         $page->update();
 
         return 'updated';
     }
 
-    public function delete(){
+    public function delete($id){
         $page = new Page();
         $page->delete([
-            'id' => 6
+            'id' => $id
         ]);
 
         return 'deleted';

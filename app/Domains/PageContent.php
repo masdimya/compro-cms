@@ -1,15 +1,35 @@
 <?php
+namespace App\Domains;
 
-class PageContent extends Page 
+use App\Interfaces\PageInterface;
+use App\Models\Content;
+class PageContent implements PageInterface
 {
-  private $id;
-  private $title;
-  private $description;
-  private $image;
-  private $file;
+  
+  protected $model;
 
-  public function create(){}
-  public function update(){}
-  public function delete(){}
+  public function __construct($tableName)
+  {
+    $contentModel = new Content;
+    $contentModel->setTable($tableName);
+    $this->model = $contentModel;
+  }
+
+  public function createPost($data){
+    $this->model->create($data);
+  }
+  public function updatePost($postId,$data){
+    $this->model->where('id', $postId)->update($data);
+  }
+  public function detailPost($postId){
+    return $this->model->where('id', $postId)->first();
+  }
+  public function deletePost($postId){
+    return $this->model->where('id', $postId)->delete();
+  }
+  public function getListPost(){
+    return $this->model->get();
+  }
+
 
 }
