@@ -7,6 +7,10 @@ use App\Domains\Page;
 
 class PageSettingController extends Controller
 {
+    public function index(){
+        return view('admin.pages.home');
+    }
+    
     public function get(){
         $page = new Page();
         $pageName = $page->getList(['name']);
