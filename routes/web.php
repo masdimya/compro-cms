@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
   return view('admin.pages.home');
-});
+})->name('admin-home');
 
 
 Route::get('/page', 'PageSettingController@index')->name('page_setting');
+Route::get('/page/create', 'PageSettingController@create')->name('page_create');
+Route::post('/page/create', 'PageSettingController@store')->name('page_store');
 
-Route::post('/page/create', 'PageSettingController@create');
-Route::get('/page/edit', 'PageSettingController@edit');
-Route::get('/page/delete', 'PageSettingController@delete');
+Route::get('/page/{id}/edit', 'PageSettingController@edit')->name('page_edit');
+Route::put('/page/{id}/edit', 'PageSettingController@update')->name('page_update');
+
+Route::delete('/page/{id}/delete', 'PageSettingController@delete')->name('page_delete');
 
 

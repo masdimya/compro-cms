@@ -49,6 +49,11 @@ class Page
 
     $this->setMigration($this->type, $this->func_name);
 
+    return [
+      'id'   =>  $this->id,
+      'name' =>  $this->name,
+      'type' =>  $this->type,
+    ];
   }
 
   public function set($name = null, $type = null, $image = null){

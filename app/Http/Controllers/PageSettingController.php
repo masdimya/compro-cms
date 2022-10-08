@@ -23,21 +23,37 @@ class PageSettingController extends Controller
         ]);
     }
     
-    public function get(){
-        $pageName = $this->page->getList(['name']);
-        return $pageName;
+    public function create(){
+        return view('admin.pages.page-create',[
+            "preTitle" => "Page Setting",
+            "title"    => "Add Page",
+        ]);
     }
 
-    
-    public function create(Request $request){
+    public function store(Request $request){
         $page = new Page();
         $page->set($request->name, $request->type);
         $page->add();
-        return 'created';
+        return redirect(route('page_setting'));
     }
 
 
     public function edit($id, Request $request){
+        $page = new Page();
+        $data = $page->get([
+            'id' => $id
+        ]);
+
+        return view('admin.pages.page-edit',[
+            "preTitle" => "Page Setting",
+            "title"    => "Edit Page",
+            "id"       => $data["id"],
+            "name"     => $data["name"],
+        ]);
+       
+    }
+
+    public function update($id, Request $request){
         $page = new Page();
         $page->get([
             'id' => $id
@@ -46,7 +62,7 @@ class PageSettingController extends Controller
         $page->setName($request->name);
         $page->update();
 
-        return 'updated';
+        return redirect(route('page_setting'));
     }
 
     public function delete($id){
@@ -55,6 +71,6 @@ class PageSettingController extends Controller
             'id' => $id
         ]);
 
-        return 'deleted';
+        return redirect(route('page_setting'));
     }
 }
