@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'PageSettingController@index');
-Route::get('/page', 'PageSettingController@get');
+Route::get('/', function(){
+  return view('admin.pages.home');
+});
+
+
+Route::get('/page', 'PageSettingController@index')->name('page_setting');
+
 Route::post('/page/create', 'PageSettingController@create');
 Route::get('/page/edit', 'PageSettingController@edit');
 Route::get('/page/delete', 'PageSettingController@delete');

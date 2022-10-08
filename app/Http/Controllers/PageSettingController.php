@@ -7,13 +7,24 @@ use App\Domains\Page;
 
 class PageSettingController extends Controller
 {
+    private $page;
+
+    public function __construct(){
+        $this->page = new Page();
+    }
+    
     public function index(){
-        return view('admin.pages.home');
+        $pageList = $this->page->getList(['id','name','type']);
+
+        return view('admin.pages.page-setting',[
+            "preTitle" => "Page Setting",
+            "title"    => "List Page",
+            "pageList" => $pageList
+        ]);
     }
     
     public function get(){
-        $page = new Page();
-        $pageName = $page->getList(['name']);
+        $pageName = $this->page->getList(['name']);
         return $pageName;
     }
 

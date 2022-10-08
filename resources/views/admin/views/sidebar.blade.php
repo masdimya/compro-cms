@@ -171,7 +171,7 @@
                 <a class="dropdown-item" href="./pagination.html">
                   Pagination
                 </a>
-                <a class="dropdown-item" href="./inline-player.html">
+                <a class="dropdown-item" href="{{route('page_setting')}}">
                  Page Setting
                 </a>
               </div>
@@ -195,6 +195,22 @@
         <li class="nav-item">
           <a class="nav-link" href="./index.html" >
             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-seo" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M7 8h-3a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-3"></path>
+                <path d="M14 16h-4v-8h4"></path>
+                <path d="M11 12h2"></path>
+                <rect x="17" y="8" width="4" height="8" rx="1"></rect>
+             </svg>
+            </span>
+            <span class="nav-link-title">
+              SEO Setting
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./index.html" >
+            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <circle cx="9" cy="7" r="4"></circle>
@@ -208,6 +224,7 @@
             </span>
           </a>
         </li>
+        
       </ul>
     </div>
   </div>
