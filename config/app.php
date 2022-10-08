@@ -237,5 +237,7 @@ return [
     |
     |*/
     
-    'dynamic_routes_path' => base_path('routes/page.php')
+    'dynamic_routes_path' => base_path('routes/page.php'),
+    'admin_sidebar_templates' => base_path('resources/views/admin/views/sidebar-item.blade.php')
+
 ];

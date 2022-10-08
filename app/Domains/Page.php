@@ -4,6 +4,8 @@ namespace App\Domains;
 use App\Models\Page as PageModel;
 use App\Traits\PageTableGenerator;
 use App\Traits\PageRouteGenerator;
+use App\Traits\PageSideBarGenerator;
+
 
 
 use Error;
@@ -12,6 +14,7 @@ class Page
 {
   use PageTableGenerator;
   use PageRouteGenerator;
+  use PageSideBarGenerator;
 
   private $id;
   private $name;
@@ -34,6 +37,7 @@ class Page
       $this->pageTabel->save();
       $this->createTable();
       $this->updateRoute();
+      $this->updateSideBar();
     }
 
   }
@@ -72,6 +76,8 @@ class Page
 
     $this->pageTabel->name = $this->name;
     $this->pageTabel->save();
+    $this->updateSideBar();
+
   }
 
 
@@ -86,6 +92,8 @@ class Page
     }
 
     $this->pageTabel->delete();
+    $this->updateSideBar();
+
 
   }
   
@@ -107,6 +115,11 @@ class Page
   public function updateRoute(){
     $pageList = $this->getList(['func_name', 'type']);
     $this->routeGenerate($pageList);
+  }
+
+  public function updateSideBar(){
+    $pageList = $this->getList(['func_name', 'name']);
+    $this->generateSidebar($pageList);
   }
 
 }

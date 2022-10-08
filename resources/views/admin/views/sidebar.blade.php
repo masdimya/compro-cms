@@ -168,11 +168,9 @@
           <div class="dropdown-menu">
             <div class="dropdown-menu-columns">
               <div class="dropdown-menu-column">
-                <a class="dropdown-item" href="./pagination.html">
-                  Pagination
-                </a>
+                @include('admin.views.sidebar-item')
                 <a class="dropdown-item" href="{{route('page_setting')}}">
-                 Page Setting
+                  Page Setting
                 </a>
               </div>
             </div>
